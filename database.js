@@ -17,12 +17,31 @@ const DEFAULT_SETTINGS = {
   currency: 'LKR'
 };
 
+function getSslConfig() {
+  if (process.env.DATABASE_SSL === 'false' || process.env.PGSSLMODE === 'disable') {
+    return false;
+  }
+  if (process.env.DATABASE_SSL === 'true') {
+    return { rejectUnauthorized: false };
+  }
+  if (!process.env.DATABASE_URL) return false;
+  const url = process.env.DATABASE_URL.toLowerCase();
+  if (
+    url.includes('localhost') ||
+    url.includes('127.0.0.1') ||
+    url.includes('railway.internal') ||
+    url.includes('rlwy.net') ||
+    url.includes('sslmode=disable')
+  ) {
+    return false;
+  }
+  return { rejectUnauthorized: false };
+}
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.DATABASE_URL && !process.env.DATABASE_URL.includes('localhost')
-    ? { rejectUnauthorized: false }
-    : false,
-  connectionTimeoutMillis: 3000
+  ssl: getSslConfig(),
+  connectionTimeoutMillis: 10000
 });
 
 const DEFAULT_DISH_IMAGE = 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=100&q=80';
