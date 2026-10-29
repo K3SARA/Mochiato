@@ -1,0 +1,10 @@
+node_modules/
+.gemini/
+.agents/
+*.log
+
+# Local Netlify folder
+.netlify
+
+# Environment variables (Postgres connection string, etc.)
+.env

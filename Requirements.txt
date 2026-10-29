@@ -1,0 +1,41 @@
+Cloud-Based Restaurant POS System – අමතර තාක්ෂණික අවශ්‍යතා
+
+1. Remote Access
+
+* ඕනෑම ස්ථානයක සිට Mobile Phone හෝ Laptop එකකින් Login වීමට හැකි විය යුතුය.
+* දත්ත Real-Time හෝ ඉතා කෙටි ප්‍රමාදයකින් යාවත්කාලීන විය යුතුය.
+* Owner Dashboard එක Mobile Screen එකට ගැළපෙන ලෙස නිර්මාණය කළ යුතුය.
+
+2. Owner Dashboard
+
+* අද දින විකුණුම්, වියදම්, දළ ලාභය සහ ශුද්ධ මෙහෙයුම් ලාභය.
+* දෛනික, සතිපතා, මාසික සහ වාර්ෂික Reports.
+* Stock Alerts සහ වැඩිම ලාභයක් ලබාදෙන ආහාර.
+* දවස අවසානයේ WhatsApp හෝ Email හරහා Report එකක් ලබාගැනීමේ විකල්පය.
+
+3. Cloud Database සහ Backup
+
+* ආරක්ෂිත Cloud Database එකක් භාවිත කිරීම.
+* ස්වයංක්‍රීය දෛනික Backup සහ Restore පහසුකම්.
+* Owner සහ Staff සඳහා වෙනම Login සහ Permissions.
+* දත්ත වෙනස් කළ පුද්ගලයා සහ වෙනස්කම් සිදු කළ වේලාව සටහන් කිරීම.
+
+4. Internet Failure Handling
+
+* Internet සම්බන්ධතාව නැති වූ විට අවන්හලේ විකුණුම් අඛණ්ඩව සිදු කළ හැකි Offline Mode එකක් අවශ්‍යදැයි සලකා බැලිය යුතුය.
+* නැවත Internet සම්බන්ධ වූ විට දත්ත ආරක්ෂිතව Cloud එක සමඟ Sync විය යුතුය.
+* එකම බිල්පත දෙවරක් ඇතුළත් වීම වැළැක්විය යුතුය.
+
+5. Data Ownership
+
+* ව්‍යාපාරයේ දත්ත සහ Database එකට ප්‍රවේශ වීමේ අයිතිය Owner සතු විය යුතුය.
+* Source Code, Domain, Hosting සහ Database ප්‍රවේශයන් පිළිබඳ අයිතිය සහ වගකීම් ගිවිසුමේ පැහැදිලිව සඳහන් කළ යුතුය.
+* මාසික Hosting සහ Maintenance ගාස්තු වෙන වෙනම සඳහන් කළ යුතුය.
+
+6. Acceptance Testing
+
+* දුරස්ථව Login වී Reports බැලීම පරීක්ෂා කිරීම.
+* POS Sale එකකින් Stock අඩුවීම තහවුරු කිරීම.
+* දෛනික Profit & Loss Report නිවැරදි බව තහවුරු කිරීම.
+* Backup එකකින් දත්ත නැවත ලබාගැනීම පරීක්ෂා කිරීම.
+* Internet බිඳවැටීමකින් පසු දත්ත Sync වීම පරීක්ෂා කිරීම.

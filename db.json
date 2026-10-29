@@ -1,0 +1,1240 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin123",
+      "role": "Admin"
+    },
+    {
+      "id": 2,
+      "username": "stockkeeper",
+      "password": "stock123",
+      "role": "StockKeeper"
+    },
+    {
+      "id": 3,
+      "username": "cashier",
+      "password": "cashier123",
+      "role": "Cashier"
+    },
+    {
+      "id": 4,
+      "username": "Hashini",
+      "password": "Hashini123",
+      "role": "Cashier"
+    },
+    {
+      "id": 5,
+      "username": "nadeesha",
+      "password": "$2b$10$A74.gXf1qHat03MgEnZahOi1f.T7UMS408wuLzdoPfVNaSw4sJU.G",
+      "role": "Cashier"
+    }
+  ],
+  "dishes": [
+    {
+      "id": 1,
+      "name": "Espresso",
+      "category": "Drinks",
+      "orders": 145,
+      "price": 3.5,
+      "imageUrl": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=500&q=80",
+      "stock": 4,
+      "cost": 1.5
+    },
+    {
+      "id": 2,
+      "name": "Avocado Toast",
+      "category": "Food",
+      "orders": 99,
+      "price": 8.5,
+      "imageUrl": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?w=500&q=80",
+      "stock": 6,
+      "cost": 4
+    },
+    {
+      "id": 3,
+      "name": "Cappuccino",
+      "category": "Drinks",
+      "orders": 210,
+      "price": 4.5,
+      "imageUrl": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=500&q=80",
+      "stock": 4,
+      "cost": 2
+    },
+    {
+      "id": 4,
+      "name": "Blueberry Muffin",
+      "category": "Food",
+      "orders": 85,
+      "price": 3,
+      "imageUrl": "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=500&q=80",
+      "stock": 6,
+      "cost": 1.2
+    },
+    {
+      "id": 5,
+      "name": "Latte",
+      "category": "Drinks",
+      "orders": 185,
+      "price": 4,
+      "imageUrl": "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=500&q=80",
+      "stock": 0,
+      "cost": 1.8
+    },
+    {
+      "id": 6,
+      "name": "Falooda",
+      "category": "Drinks",
+      "price": 250,
+      "stock": 10,
+      "imageUrl": "images/upload_1783704630959.jpeg",
+      "orders": 0,
+      "cost": 120
+    },
+    {
+      "id": 7,
+      "name": "millkshake",
+      "category": "Drinks",
+      "price": 300,
+      "cost": 150,
+      "stock": 96,
+      "orders": 4,
+      "imageUrl": "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=100&q=80"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1,
+      "name": "Kesara",
+      "role": "Waiter",
+      "earnings": 450,
+      "shiftDuration": "08:00 AM - 04:00 PM",
+      "avatarUrl": "https://i.pravatar.cc/100?img=1"
+    },
+    {
+      "id": 2,
+      "name": "Albert Flores",
+      "role": "Manager",
+      "earnings": 750,
+      "shiftDuration": "09:00 AM - 05:00 PM",
+      "avatarUrl": "https://i.pravatar.cc/100?img=11"
+    },
+    {
+      "id": 3,
+      "name": "Dianne Russell",
+      "role": "Courier",
+      "earnings": 320,
+      "shiftDuration": "10:00 AM - 06:00 PM",
+      "avatarUrl": "https://i.pravatar.cc/100?img=5"
+    }
+  ],
+  "sales": [
+    {
+      "id": 1,
+      "timeLabel": "09:00",
+      "amount": 45
+    },
+    {
+      "id": 2,
+      "timeLabel": "10:00",
+      "amount": 80
+    },
+    {
+      "id": 3,
+      "timeLabel": "11:00",
+      "amount": 110
+    },
+    {
+      "id": 4,
+      "timeLabel": "12:00",
+      "amount": 205
+    },
+    {
+      "id": 5,
+      "timeLabel": "13:00",
+      "amount": 180
+    },
+    {
+      "id": 6,
+      "timeLabel": "14:00",
+      "amount": 120
+    },
+    {
+      "id": 7,
+      "timeLabel": "15:00",
+      "amount": 90
+    },
+    {
+      "id": 8,
+      "timeLabel": "16:00",
+      "amount": 65
+    },
+    {
+      "id": 9,
+      "timeLabel": "17:00",
+      "amount": 130
+    },
+    {
+      "id": 10,
+      "timeLabel": "18:00",
+      "amount": 160
+    }
+  ],
+  "bills": [
+    {
+      "id": "ORD-1026",
+      "date": "2026-10-28",
+      "customer": "Takeaway",
+      "amount": 700,
+      "status": "Paid",
+      "items": [
+        {
+          "cartItemId": "17932034878625174",
+          "id": 7,
+          "name": "millkshake",
+          "category": "Drinks",
+          "price": 350,
+          "quantity": 2
+        }
+      ],
+      "client_order_uuid": "221b12da-81cb-46ca-a111-df6239f62b30"
+    },
+    {
+      "id": "ORD-1025",
+      "date": "2026-10-28",
+      "customer": "Takeaway",
+      "amount": 700,
+      "status": "Paid",
+      "items": [
+        {
+          "cartItemId": "17932033612860289",
+          "id": 7,
+          "name": "millkshake",
+          "category": "Drinks",
+          "price": 350,
+          "quantity": 2
+        }
+      ],
+      "client_order_uuid": "c9608b20-74d7-481a-9501-04443e4a4326"
+    },
+    {
+      "id": "ORD-1024",
+      "date": "2026-10-27",
+      "customer": "Audit Customer",
+      "amount": 760,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 7,
+          "name": "Test Audit Muffin",
+          "price": 380,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "ORD-1023",
+      "date": "2026-10-27",
+      "customer": "Table 2",
+      "amount": 3.5,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 1,
+          "name": "Espresso",
+          "price": 3.5,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-1022",
+      "date": "2026-10-27",
+      "customer": "Table 3",
+      "amount": 0,
+      "status": "Paid",
+      "items": []
+    },
+    {
+      "id": "ORD-1021",
+      "date": "2026-10-27",
+      "customer": "Table 3",
+      "amount": 3.5,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 1,
+          "name": "Espresso",
+          "price": 3.5,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-1020",
+      "date": "2026-09-06",
+      "customer": "Takeaway",
+      "amount": 3.5,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 1,
+          "name": "Espresso",
+          "category": "Drinks",
+          "price": 3.5,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-1019",
+      "date": "2026-07-10",
+      "customer": "Takeaway",
+      "amount": 10.5,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 1,
+          "name": "Espresso",
+          "category": "Drinks",
+          "price": 3.5,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "ORD-1018",
+      "date": "2026-07-10",
+      "customer": "Takeaway",
+      "amount": 3.5,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 1,
+          "name": "Espresso",
+          "category": "Drinks",
+          "price": 3.5,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-1017",
+      "date": "2026-07-10",
+      "customer": "Takeaway",
+      "amount": 49,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 1,
+          "name": "Espresso",
+          "category": "Drinks",
+          "price": 3.5,
+          "quantity": 14
+        }
+      ]
+    },
+    {
+      "id": "ORD-1016",
+      "date": "2026-07-09",
+      "customer": "Takeaway",
+      "amount": 8.5,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 2,
+          "name": "Avocado Toast",
+          "category": "Food",
+          "price": 8.5,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD-1001",
+      "date": "2026-07-10",
+      "customer": "Table 4",
+      "amount": 45,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 1,
+          "name": "Espresso",
+          "category": "Drinks",
+          "price": 3.5,
+          "quantity": 2
+        },
+        {
+          "id": 2,
+          "name": "Avocado Toast",
+          "category": "Food",
+          "price": 8.5,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "ORD-1002",
+      "date": "2026-07-10",
+      "customer": "Takeaway",
+      "amount": 18.5,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 3,
+          "name": "Cappuccino",
+          "category": "Drinks",
+          "price": 4.5,
+          "quantity": 2
+        },
+        {
+          "id": 4,
+          "name": "Blueberry Muffin",
+          "category": "Food",
+          "price": 3,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "ORD-1003",
+      "date": "2026-07-10",
+      "customer": "Table 1",
+      "amount": 120,
+      "status": "Pending",
+      "items": [
+        {
+          "id": 5,
+          "name": "Latte",
+          "category": "Drinks",
+          "price": 4,
+          "quantity": 5
+        },
+        {
+          "id": 2,
+          "name": "Avocado Toast",
+          "category": "Food",
+          "price": 8.5,
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": "ORD-1004",
+      "date": "2026-07-10",
+      "customer": "Table 7",
+      "amount": 24,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 1,
+          "name": "Espresso",
+          "category": "Drinks",
+          "price": 3.5,
+          "quantity": 4
+        },
+        {
+          "id": 4,
+          "name": "Blueberry Muffin",
+          "category": "Food",
+          "price": 3,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "ORD-0999",
+      "date": "2026-07-09",
+      "customer": "Table 2",
+      "amount": 35,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 1,
+          "name": "Espresso",
+          "category": "Drinks",
+          "price": 3.5,
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "ORD-0998",
+      "date": "2026-07-09",
+      "customer": "Takeaway",
+      "amount": 55.5,
+      "status": "Paid",
+      "items": [
+        {
+          "id": 2,
+          "name": "Avocado Toast",
+          "category": "Food",
+          "price": 8.5,
+          "quantity": 5
+        },
+        {
+          "id": 3,
+          "name": "Cappuccino",
+          "category": "Drinks",
+          "price": 4.5,
+          "quantity": 3
+        }
+      ]
+    },
+    {
+      "id": "ORD-0997",
+      "date": "2026-07-07",
+      "customer": "Table 5",
+      "amount": 80,
+      "status": "Paid"
+    },
+    {
+      "id": "ORD-0996",
+      "date": "2026-07-06",
+      "customer": "Table 1",
+      "amount": 110,
+      "status": "Paid"
+    },
+    {
+      "id": "ORD-0995",
+      "date": "2026-07-05",
+      "customer": "Takeaway",
+      "amount": 45,
+      "status": "Paid"
+    },
+    {
+      "id": "ORD-0994",
+      "date": "2026-06-28",
+      "customer": "Table 3",
+      "amount": 95,
+      "status": "Paid"
+    },
+    {
+      "id": "ORD-0993",
+      "date": "2026-06-25",
+      "customer": "Table 4",
+      "amount": 150,
+      "status": "Paid"
+    },
+    {
+      "id": "ORD-0992",
+      "date": "2026-06-15",
+      "customer": "Table 2",
+      "amount": 70,
+      "status": "Paid"
+    },
+    {
+      "id": "ORD-0991",
+      "date": "2026-05-10",
+      "customer": "Table 1",
+      "amount": 320,
+      "status": "Paid"
+    },
+    {
+      "id": "ORD-0990",
+      "date": "2026-04-12",
+      "customer": "Table 5",
+      "amount": 410,
+      "status": "Paid"
+    },
+    {
+      "id": "ORD-0889",
+      "date": "2026-03-22",
+      "customer": "Table 3",
+      "amount": 180,
+      "status": "Paid"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "title": "Low Stock Alert",
+      "text": "Coffee beans running low in storage.",
+      "time": "10 mins ago",
+      "type": "warning"
+    },
+    {
+      "id": 2,
+      "title": "Shift Updated",
+      "text": "Your shift tomorrow has been changed to 09:00 AM.",
+      "time": "2 hours ago",
+      "type": "info"
+    }
+  ],
+  "summary": {
+    "totalIncome": 77612.5,
+    "foodIncome": 35008.5,
+    "drinksIncome": 38604,
+    "othersIncome": 4000,
+    "totalOrders": 21379,
+    "ordersGrowth": -2.33,
+    "newCustomers": 256,
+    "customersGrowth": 32.4
+  },
+  "expenses": [
+    {
+      "id": 3,
+      "title": "ice cream",
+      "category": "Raw Materials / Ingredients",
+      "amount": 2500,
+      "date": "2026-10-28",
+      "notes": "",
+      "created_at": "2026-10-28T15:57:21.567Z"
+    },
+    {
+      "id": 2,
+      "title": "Electricity & Water Bill (Utility)",
+      "category": "Utilities",
+      "amount": 8450,
+      "date": "2026-10-25",
+      "notes": "CEB monthly cafe power consumption",
+      "created_by": "admin",
+      "createdAt": "2026-10-25T10:00:00.000Z"
+    }
+  ],
+  "settings": {
+    "notification_phone": "0768899324",
+    "notification_recipient": "W.A Lahiru Sampath",
+    "notification_channel": "WhatsApp",
+    "auto_day_end_enabled": true,
+    "cafe_name": "Mochiato",
+    "currency": "LKR",
+    "notification_email": "wanniarachchigelahirusampath@gmail.com",
+    "address": "138B, Matara Para, Tangalle"
+  },
+  "audit_logs": [
+    {
+      "id": 43,
+      "timestamp": "2026-10-28T16:14:57.508Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "ITEM_UPDATED",
+      "category": "Inventory",
+      "details": "Updated dish \"millkshake\" (Selling: LKR 300.00, Cost: LKR 150.00, Stock: 96)",
+      "metadata": {
+        "id": 7,
+        "name": "millkshake",
+        "updates": {
+          "price": "300.00",
+          "cost": "150.00",
+          "name": "millkshake",
+          "category": "Drinks",
+          "imageUrl": "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=100&q=80"
+        }
+      }
+    },
+    {
+      "id": 42,
+      "timestamp": "2026-10-28T16:14:15.594Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "LOGIN_SUCCESS",
+      "category": "Auth",
+      "details": "User \"admin\" logged in successfully (Admin)",
+      "metadata": {
+        "role": "Admin"
+      }
+    },
+    {
+      "id": 41,
+      "timestamp": "2026-10-28T16:14:04.337Z",
+      "username": "nadeesha",
+      "role": "Cashier",
+      "action": "USER_LOGOUT",
+      "category": "Auth",
+      "details": "Staff member \"nadeesha\" (Cashier) logged out.",
+      "metadata": {}
+    },
+    {
+      "id": 40,
+      "timestamp": "2026-10-28T16:10:06.046Z",
+      "username": "nadeesha",
+      "role": "Cashier",
+      "action": "LOGIN_SUCCESS",
+      "category": "Auth",
+      "details": "User \"nadeesha\" logged in successfully (Cashier)",
+      "metadata": {
+        "role": "Cashier"
+      }
+    },
+    {
+      "id": 39,
+      "timestamp": "2026-10-28T16:09:45.992Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "USER_LOGOUT",
+      "category": "Auth",
+      "details": "Staff member \"admin\" (Admin) logged out.",
+      "metadata": {}
+    },
+    {
+      "id": 38,
+      "timestamp": "2026-10-28T16:09:36.120Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "USER_CREATED",
+      "category": "Users",
+      "details": "Created new staff user \"nadeesha\" with role \"Cashier\"",
+      "metadata": {
+        "username": "nadeesha",
+        "role": "Cashier"
+      }
+    },
+    {
+      "id": 37,
+      "timestamp": "2026-10-28T16:05:43.904Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "ORDER_CHECKOUT",
+      "category": "Sales",
+      "details": "Completed order #ORD-1026 for LKR 700.00 (1 items, Customer: Takeaway)",
+      "metadata": {
+        "billId": "ORD-1026",
+        "amount": 700,
+        "customer": "Takeaway",
+        "itemCount": 1,
+        "items": [
+          {
+            "name": "millkshake",
+            "quantity": 2,
+            "price": 350
+          }
+        ]
+      }
+    },
+    {
+      "id": 36,
+      "timestamp": "2026-10-28T16:04:12.485Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "ORDER_CHECKOUT",
+      "category": "Sales",
+      "details": "Completed order #ORD-1025 for LKR 700.00 (1 items, Customer: Takeaway)",
+      "metadata": {
+        "billId": "ORD-1025",
+        "amount": 700,
+        "customer": "Takeaway",
+        "itemCount": 1,
+        "items": [
+          {
+            "name": "millkshake",
+            "quantity": 2,
+            "price": 350
+          }
+        ]
+      }
+    },
+    {
+      "id": 35,
+      "timestamp": "2026-10-28T16:02:08.346Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "LOGIN_SUCCESS",
+      "category": "Auth",
+      "details": "User \"admin\" logged in successfully (Admin)",
+      "metadata": {
+        "role": "Admin"
+      }
+    },
+    {
+      "id": 34,
+      "timestamp": "2026-10-28T16:01:55.751Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "ITEM_UPDATED",
+      "category": "Inventory",
+      "details": "Updated dish \"millkshake\" (Selling: LKR 350.00, Cost: LKR 150.00, Stock: 100)",
+      "metadata": {
+        "id": 7,
+        "name": "millkshake",
+        "updates": {
+          "price": "350.00",
+          "cost": "150.00",
+          "stock": "100"
+        }
+      }
+    },
+    {
+      "id": 33,
+      "timestamp": "2026-10-28T15:57:21.596Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "EXPENSE_CREATED",
+      "category": "Expenses",
+      "details": "Recorded expense \"ice cream\" for LKR 2500.00 [Category: Raw Materials / Ingredients]",
+      "metadata": {
+        "id": 3,
+        "title": "ice cream",
+        "amount": 2500,
+        "category": "Raw Materials / Ingredients",
+        "notes": ""
+      }
+    },
+    {
+      "id": 32,
+      "timestamp": "2026-10-28T15:56:14.586Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "ITEM_UPDATED",
+      "category": "Inventory",
+      "details": "Updated dish \"millkshake\" (Selling: LKR 350.00, Cost: LKR 150.00, Stock: 0)",
+      "metadata": {
+        "id": 7,
+        "name": "millkshake",
+        "updates": {
+          "price": "350.00",
+          "cost": "150.00",
+          "stock": "0"
+        }
+      }
+    },
+    {
+      "id": 31,
+      "timestamp": "2026-10-28T15:54:20.095Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "ITEM_CREATED",
+      "category": "Inventory",
+      "details": "Added new dish \"millkshake\" (Selling: LKR 350.00, Cost: LKR 150.00, Stock: 0)",
+      "metadata": {
+        "id": 7,
+        "name": "millkshake",
+        "price": 350,
+        "cost": 150,
+        "stock": 0
+      }
+    },
+    {
+      "id": 30,
+      "timestamp": "2026-10-28T15:48:16.772Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "LOGIN_SUCCESS",
+      "category": "Auth",
+      "details": "User \"admin\" logged in successfully (Admin)",
+      "metadata": {
+        "role": "Admin"
+      }
+    },
+    {
+      "id": 29,
+      "timestamp": "2026-10-28T15:42:42.679Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "LOGIN_SUCCESS",
+      "category": "Auth",
+      "details": "User \"admin\" logged in successfully (Admin)",
+      "metadata": {
+        "role": "Admin"
+      }
+    },
+    {
+      "id": 28,
+      "timestamp": "2026-10-28T09:38:12.763Z",
+      "username": "admin",
+      "role": "Staff",
+      "action": "DAY_END_REPORT_SENT",
+      "category": "Reports",
+      "details": "Dispatched yesterday Day-End financial summary to W.A Lahiru Sampath (0768899324) via WhatsApp",
+      "metadata": {
+        "period": "yesterday",
+        "recipient": "W.A Lahiru Sampath",
+        "phone": "0768899324",
+        "revenue": 767,
+        "cogs": 3,
+        "grossProfit": 764,
+        "expenses": 0,
+        "netProfit": 764,
+        "orders": 4
+      }
+    },
+    {
+      "id": 27,
+      "timestamp": "2026-10-28T09:32:39.998Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "LOGIN_SUCCESS",
+      "category": "Auth",
+      "details": "User \"admin\" logged in successfully (Admin)",
+      "metadata": {
+        "role": "Admin"
+      }
+    },
+    {
+      "id": 26,
+      "timestamp": "2026-10-28T09:30:06.476Z",
+      "username": "admin",
+      "role": "Staff",
+      "action": "DAY_END_REPORT_SENT",
+      "category": "Reports",
+      "details": "Dispatched today Day-End financial summary to Cafe Owner (0711853911) via WhatsApp",
+      "metadata": {
+        "period": "today",
+        "recipient": "Cafe Owner",
+        "phone": "0711853911",
+        "revenue": 0,
+        "cogs": 0,
+        "grossProfit": 0,
+        "expenses": 0,
+        "netProfit": 0,
+        "orders": 0
+      }
+    },
+    {
+      "id": 25,
+      "timestamp": "2026-10-28T09:30:06.410Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "SETTINGS_UPDATED",
+      "category": "Settings",
+      "details": "Updated system settings: Phone=0711853911, Recipient=Cafe Owner, Channel=WhatsApp",
+      "metadata": {
+        "notification_phone": "0711853911",
+        "notification_recipient": "Cafe Owner",
+        "notification_channel": "WhatsApp",
+        "auto_day_end_enabled": true,
+        "cafe_name": "Teen's Cafe",
+        "notification_email": "wanniarachchigelahirusampath@gmail.com",
+        "address": "138B, Matara Para, Tangalle",
+        "currency": "LKR"
+      }
+    },
+    {
+      "id": 24,
+      "timestamp": "2026-10-28T09:29:16.467Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "LOGIN_SUCCESS",
+      "category": "Auth",
+      "details": "User \"admin\" logged in successfully (Admin)",
+      "metadata": {
+        "role": "Admin"
+      }
+    },
+    {
+      "id": 23,
+      "timestamp": "2026-10-28T09:28:49.218Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "LOGIN_SUCCESS",
+      "category": "Auth",
+      "details": "User \"admin\" logged in successfully (Admin)",
+      "metadata": {
+        "role": "Admin"
+      }
+    },
+    {
+      "id": 22,
+      "timestamp": "2026-10-28T07:53:28.539Z",
+      "username": "admin",
+      "role": "Staff",
+      "action": "DAY_END_REPORT_SENT",
+      "category": "Reports",
+      "details": "Dispatched today Day-End financial summary to Cafe Owner (0711853911) via WhatsApp",
+      "metadata": {
+        "period": "today",
+        "recipient": "Cafe Owner",
+        "phone": "0711853911",
+        "revenue": 0,
+        "cogs": 0,
+        "grossProfit": 0,
+        "expenses": 0,
+        "netProfit": 0,
+        "orders": 0
+      }
+    },
+    {
+      "id": 21,
+      "timestamp": "2026-10-28T07:53:28.229Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "SETTINGS_UPDATED",
+      "category": "Settings",
+      "details": "Updated system settings: Phone=0711853911, Recipient=Cafe Owner, Channel=WhatsApp",
+      "metadata": {
+        "notification_phone": "0711853911",
+        "notification_recipient": "Cafe Owner",
+        "notification_channel": "WhatsApp",
+        "auto_day_end_enabled": true,
+        "cafe_name": "Teen's Cafe"
+      }
+    },
+    {
+      "id": 20,
+      "timestamp": "2026-10-28T07:52:02.310Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "LOGIN_SUCCESS",
+      "category": "Auth",
+      "details": "User \"admin\" logged in successfully (Admin)",
+      "metadata": {
+        "role": "Admin"
+      }
+    },
+    {
+      "id": 19,
+      "timestamp": "2026-10-28T04:57:55.701Z",
+      "username": "admin",
+      "role": "Staff",
+      "action": "DAY_END_REPORT_SENT",
+      "category": "Reports",
+      "details": "Dispatched today Day-End financial summary to Cafe Owner (0711853911) via WhatsApp",
+      "metadata": {
+        "period": "today",
+        "recipient": "Cafe Owner",
+        "phone": "0711853911",
+        "revenue": 0,
+        "cogs": 0,
+        "grossProfit": 0,
+        "expenses": 0,
+        "netProfit": 0,
+        "orders": 0
+      }
+    },
+    {
+      "id": 18,
+      "timestamp": "2026-10-28T04:56:06.894Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "LOGIN_SUCCESS",
+      "category": "Auth",
+      "details": "User \"admin\" logged in successfully (Admin)",
+      "metadata": {
+        "role": "Admin"
+      }
+    },
+    {
+      "id": 17,
+      "timestamp": "2026-10-28T04:49:44.918Z",
+      "username": "admin",
+      "role": "Anonymous",
+      "action": "LOGIN_FAILED",
+      "category": "Auth",
+      "details": "Failed authentication attempt for username \"admin\"",
+      "metadata": {
+        "username": "admin"
+      }
+    },
+    {
+      "id": 16,
+      "timestamp": "2026-10-28T04:49:43.276Z",
+      "username": "admin",
+      "role": "Anonymous",
+      "action": "LOGIN_FAILED",
+      "category": "Auth",
+      "details": "Failed authentication attempt for username \"admin\"",
+      "metadata": {
+        "username": "admin"
+      }
+    },
+    {
+      "id": 15,
+      "timestamp": "2026-10-28T04:49:43.217Z",
+      "username": "admin",
+      "role": "Anonymous",
+      "action": "LOGIN_FAILED",
+      "category": "Auth",
+      "details": "Failed authentication attempt for username \"admin\"",
+      "metadata": {
+        "username": "admin"
+      }
+    },
+    {
+      "id": 14,
+      "timestamp": "2026-10-28T04:49:42.150Z",
+      "username": "admin",
+      "role": "Anonymous",
+      "action": "LOGIN_FAILED",
+      "category": "Auth",
+      "details": "Failed authentication attempt for username \"admin\"",
+      "metadata": {
+        "username": "admin"
+      }
+    },
+    {
+      "id": 13,
+      "timestamp": "2026-10-28T04:49:07.259Z",
+      "username": "Admin",
+      "role": "Anonymous",
+      "action": "LOGIN_FAILED",
+      "category": "Auth",
+      "details": "Failed authentication attempt for username \"Admin\"",
+      "metadata": {
+        "username": "Admin"
+      }
+    },
+    {
+      "id": 12,
+      "timestamp": "2026-10-28T04:48:56.474Z",
+      "username": "admin",
+      "role": "Anonymous",
+      "action": "LOGIN_FAILED",
+      "category": "Auth",
+      "details": "Failed authentication attempt for username \"admin\"",
+      "metadata": {
+        "username": "admin"
+      }
+    },
+    {
+      "id": 11,
+      "timestamp": "2026-10-28T04:48:18.004Z",
+      "username": "admin",
+      "role": "Anonymous",
+      "action": "LOGIN_FAILED",
+      "category": "Auth",
+      "details": "Failed authentication attempt for username \"admin\"",
+      "metadata": {
+        "username": "admin"
+      }
+    },
+    {
+      "id": 10,
+      "timestamp": "2026-10-28T04:47:52.550Z",
+      "username": "admin",
+      "role": "Anonymous",
+      "action": "LOGIN_FAILED",
+      "category": "Auth",
+      "details": "Failed authentication attempt for username \"admin\"",
+      "metadata": {
+        "username": "admin"
+      }
+    },
+    {
+      "id": 9,
+      "timestamp": "2026-10-28T04:29:44.205Z",
+      "username": "ama",
+      "role": "Anonymous",
+      "action": "LOGIN_FAILED",
+      "category": "Auth",
+      "details": "Failed authentication attempt for username \"ama\"",
+      "metadata": {
+        "username": "ama"
+      }
+    },
+    {
+      "id": 8,
+      "timestamp": "2026-10-27T10:45:36.700Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "EXPENSE_DELETED",
+      "category": "Expenses",
+      "details": "Deleted expense \"Test Coffee Beans Restock\" (Amount: LKR 4500.00)",
+      "metadata": {
+        "id": 3,
+        "title": "Test Coffee Beans Restock",
+        "amount": 4500
+      }
+    },
+    {
+      "id": 7,
+      "timestamp": "2026-10-27T10:45:36.697Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "ITEM_DELETED",
+      "category": "Inventory",
+      "details": "Deleted dish \"Test Audit Muffin\" (ID: 7)",
+      "metadata": {
+        "id": 7,
+        "name": "Test Audit Muffin"
+      }
+    },
+    {
+      "id": 6,
+      "timestamp": "2026-10-27T10:45:36.690Z",
+      "username": "cashier_kamal",
+      "role": "Cashier",
+      "action": "ORDER_CHECKOUT",
+      "category": "Sales",
+      "details": "Completed order #ORD-1024 for LKR 760.00 (1 items, Customer: Audit Customer)",
+      "metadata": {
+        "billId": "ORD-1024",
+        "amount": 760,
+        "customer": "Audit Customer",
+        "itemCount": 1,
+        "items": [
+          {
+            "name": "Test Audit Muffin",
+            "quantity": 2,
+            "price": 380
+          }
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "timestamp": "2026-10-27T10:45:36.686Z",
+      "username": "manager_saman",
+      "role": "Admin",
+      "action": "EXPENSE_CREATED",
+      "category": "Expenses",
+      "details": "Recorded expense \"Test Coffee Beans Restock\" for LKR 4500.00 [Category: Raw Materials / Ingredients]",
+      "metadata": {
+        "id": 3,
+        "title": "Test Coffee Beans Restock",
+        "amount": 4500,
+        "category": "Raw Materials / Ingredients",
+        "notes": ""
+      }
+    },
+    {
+      "id": 4,
+      "timestamp": "2026-10-27T10:45:36.683Z",
+      "username": "chef_john",
+      "role": "StockKeeper",
+      "action": "ITEM_UPDATED",
+      "category": "Inventory",
+      "details": "Updated dish \"Test Audit Muffin\" (Selling: LKR 380.00, Cost: LKR 150.00, Stock: 15)",
+      "metadata": {
+        "id": 7,
+        "name": "Test Audit Muffin",
+        "updates": {
+          "price": 380,
+          "stock": 15
+        }
+      }
+    },
+    {
+      "id": 3,
+      "timestamp": "2026-10-27T10:45:36.680Z",
+      "username": "chef_john",
+      "role": "StockKeeper",
+      "action": "ITEM_CREATED",
+      "category": "Inventory",
+      "details": "Added new dish \"Test Audit Muffin\" (Selling: LKR 350.00, Cost: LKR 150.00, Stock: 20)",
+      "metadata": {
+        "id": 7,
+        "name": "Test Audit Muffin",
+        "price": 350,
+        "cost": 150,
+        "stock": 20
+      }
+    },
+    {
+      "id": 1,
+      "timestamp": "2026-10-27T07:45:36.677Z",
+      "username": "system",
+      "role": "System",
+      "action": "SYSTEM_INIT",
+      "category": "Settings",
+      "details": "SmartPOS System initialized with standard menu and default permissions.",
+      "metadata": {
+        "version": "1.0.0",
+        "cafe": "Teen's Cafe"
+      }
+    },
+    {
+      "id": 2,
+      "timestamp": "2026-10-27T09:15:36.678Z",
+      "username": "admin",
+      "role": "Admin",
+      "action": "SETTINGS_UPDATED",
+      "category": "Settings",
+      "details": "Configured Day-End notification phone to 0711853911 (Recipient: Cafe Owner)",
+      "metadata": {
+        "notification_phone": "0711853911",
+        "notification_channel": "WhatsApp"
+      }
+    }
+  ]
+}

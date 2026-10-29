@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mochiato</title>
+  <link rel="icon" type="image/jpeg" href="images/logo2.jpg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#800000">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mochiato">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+  <!-- Login Page -->
+  <div id="login-page" class="login-container">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="images/logo2.jpg" alt="Mochiato Logo" style="height: 38px; width: auto; object-fit: contain; margin-right: 8px; vertical-align: middle;">
+        <h2>Mochiato</h2>
+      </div>
+      <form id="login-form">
+        <div class="input-group">
+          <label for="username">Email / Username</label>
+          <div class="input-wrapper">
+            <i class="fa-regular fa-user"></i>
+            <input type="text" id="username" placeholder="Enter your username" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="password" placeholder="Enter your password" required>
+          </div>
+        </div>
+        <div class="login-options">
+          <label class="remember-me">
+            <input type="checkbox" id="remember-me" checked>
+            <span>Remember Me</span>
+          </label>
+          <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+        <div id="login-error" class="hidden" style="color: #dc2626; background: #fee2e2; border: 1px solid #fecaca; font-size: 0.8rem; padding: 0.6rem; border-radius: var(--radius-sm); margin-bottom: 1rem; text-align: center; display: flex; align-items: center; justify-content: center; gap: 0.4rem; font-weight: 500;">
+          <i class="fa-solid fa-triangle-exclamation"></i> <span id="login-error-text">Incorrect username or password.</span>
+        </div>
+        <button type="submit" class="btn-primary" id="login-btn">
+          Sign In
+        </button>
+      </form>
+      <div class="login-footer">
+        <p>from j&co. software solutions</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Dashboard -->
+  <div id="app-dashboard" class="app-container hidden">
+
+    <!-- Sidebar backdrop (mobile only) -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="images/logo2.jpg" alt="Mochiato Logo" class="sidebar-logo" style="height: 38px; width: auto; object-fit: contain; margin-right: 8px; vertical-align: middle;">
+        <h2>Mochiato</h2>
+      </div>
+
+      <nav class="sidebar-menu">
+        <p class="menu-label">Main Menu</p>
+        <ul>
+          <li class="active" id="nav-dashboard"><a href="#" data-view="dashboard"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+          <li id="nav-food-drinks"><a href="#" data-view="food-drinks"><i class="fa-solid fa-burger"></i> Food &amp; Drinks</a></li>
+          <li id="nav-stock"><a href="#" data-view="stock"><i class="fa-solid fa-boxes-stacked"></i> Stock Management</a></li>
+          <li id="nav-expenses" class="hidden"><a href="#" data-view="expenses"><i class="fa-solid fa-money-bill-transfer"></i> Expenses</a></li>
+          <li id="nav-messages"><a href="#" data-view="messages"><i class="fa-regular fa-message"></i> Messages</a></li>
+          <li id="nav-bills"><a href="#" data-view="bills"><i class="fa-solid fa-receipt"></i> Bills</a></li>
+          <li id="nav-settings"><a href="#" data-view="settings"><i class="fa-solid fa-gear"></i> Settings</a></li>
+          <li id="nav-users" class="hidden"><a href="#" data-view="users"><i class="fa-solid fa-users-gear"></i> Role Management</a></li>
+          <li id="nav-audit" class="hidden"><a href="#" data-view="audit"><i class="fa-solid fa-clock-rotate-left"></i> Audit Logs</a></li>
+        </ul>
+
+
+        <p class="menu-label">Other</p>
+        <ul>
+          <li id="nav-notifications"><a href="#" data-view="messages"><i class="fa-regular fa-bell"></i> Notifications <span
+                class="badge" id="sidebar-notifications-count">2</span></a></li>
+          <li id="nav-support"><a href="#" data-view="support"><i class="fa-regular fa-circle-question"></i> Support</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <img src="" alt="User Avatar" id="profile-avatar">
+          <div class="user-info">
+            <h4 id="profile-name">Loading...</h4>
+            <p id="profile-role">Loading...</p>
+          </div>
+          <span class="sidebar-role-badge" id="sidebar-role-badge"></span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; width: 100%; margin-top: 0.75rem;">
+          <button class="btn-outline" id="open-profile-btn" style="flex: 1; font-size: 0.8rem; padding: 0.4rem 0.5rem;">Profile</button>
+          <button class="btn-outline" id="logout-btn" style="flex: 1; font-size: 0.8rem; padding: 0.4rem 0.5rem; border-color: rgba(220, 38, 38, 0.2); color: #dc2626;"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</button>
+        </div>
+        <p class="app-copyright">from j&co. software solutions</p>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- Top Header Bar -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+          <button class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
+          <div class="breadcrumbs">
+            <span>Dashboard</span> <i class="fa-solid fa-chevron-right"></i> <span class="current">Sales
+              statistics</span>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search...">
+          </div>
+          <button class="icon-btn" id="header-clock-btn"><i class="fa-regular fa-clock"></i></button>
+          <div style="position: relative;">
+            <button class="icon-btn notification-btn" id="header-notification-btn">
+              <i class="fa-regular fa-bell"></i>
+              <span class="dot"></span>
+            </button>
+            
+            <!-- Notification Dropdown -->
+            <div class="notification-dropdown" id="notification-dropdown">
+              <div class="dropdown-header">
+                <h4>Alerts & Notifications</h4>
+                <span class="badge" id="dropdown-badge-count">2</span>
+              </div>
+              <div class="dropdown-body" id="dropdown-notifications-list">
+                <!-- Rendered dynamically -->
+              </div>
+              <div class="dropdown-footer">
+                <a href="#" id="clear-notifications-btn">Clear All</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Sub Header -->
+      <div class="sub-header" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+        <h1>Dashboard</h1>
+        <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <div class="time-filters">
+            <button class="filter-btn">Yesterday</button>
+            <button class="filter-btn active">Today</button>
+            <button class="filter-btn">Week</button>
+            <button class="filter-btn">Month</button>
+            <button class="filter-btn">Year</button>
+          </div>
+          <button class="btn-outline" id="print-summary-btn" style="padding: 0.5rem 0.9rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+            <i class="fa-solid fa-print"></i> Print Day Summary
+          </button>
+          <button class="btn-outline" id="send-day-end-whatsapp-btn" style="padding: 0.5rem 0.9rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem; color: #15803d; border-color: #86efac; background: #f0fdf4;" title="Send Day End Financial Summary to Owner">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1rem; color: #25D366;"></i> Send Day Summary
+          </button>
+        </div>
+      </div>
+
+
+      <!-- Views Container -->
+      <div id="views-container">
+
+        <!-- Stock Management View (Stock Keeper only) -->
+        <div id="view-stock" class="view-section hidden">
+          <div class="dashboard-grid">
+            <div class="card col-span-4">
+              <div class="card-header" style="justify-content: space-between; display: flex; align-items: center;">
+                <div>
+                  <h3><i class="fa-solid fa-boxes-stacked" style="color: var(--primary); margin-right: 0.5rem;"></i>Stock &amp; Price Management</h3>
+                  <span style="font-size: 0.82rem; color: var(--text-muted);">Update item prices and stock levels</span>
+                </div>
+                <button class="btn-primary" style="padding: 0.5rem 1rem;" id="add-item-btn-stock"><i class="fa-solid fa-plus"></i> Add New Item</button>
+              </div>
+              <div class="table-container">
+                <table class="data-table" id="stock-table">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Category</th>
+                      <th>Selling Price (LKR)</th>
+                      <th>Cost Price (LKR)</th>
+                      <th>Gross Margin</th>
+                      <th>Stock Qty</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="stock-table-body">
+                    <!-- Populated by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard View -->
+        <div id="view-dashboard" class="view-section active">
+          <!-- Dashboard Grid -->
+          <div class="dashboard-grid">
+
+            <!-- Financial KPI Grid (Sales, COGS, Gross Profit, Expenses, Net Operating Profit) -->
+            <div class="card col-span-4 financial-kpis-card">
+              <div class="card-header" style="margin-bottom: 0.8rem; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 1.05rem;"><i class="fa-solid fa-chart-pie" style="color: var(--primary); margin-right: 0.5rem;"></i>Financial Health &amp; Profitability</h3>
+                <span style="font-size: 0.8rem; color: var(--text-muted);">Real-time Revenue, Cost of Goods, Overheads &amp; Net Margin</span>
+              </div>
+              <div class="financial-kpi-grid">
+                <div class="kpi-card">
+                  <div class="kpi-icon icon-revenue"><i class="fa-solid fa-sack-dollar"></i></div>
+                  <div class="kpi-details">
+                    <span class="kpi-title">Gross Revenue</span>
+                    <h3 id="financial-revenue">LKR 0.00</h3>
+                    <span class="kpi-subtext" id="financial-orders-count">0 orders completed</span>
+                  </div>
+                </div>
+                <div class="kpi-card">
+                  <div class="kpi-icon icon-cogs"><i class="fa-solid fa-box-open"></i></div>
+                  <div class="kpi-details">
+                    <span class="kpi-title">Cost of Goods (COGS)</span>
+                    <h3 id="financial-cogs">LKR 0.00</h3>
+                    <span class="kpi-subtext">Direct dish preparation costs</span>
+                  </div>
+                </div>
+                <div class="kpi-card highlight-profit">
+                  <div class="kpi-icon icon-gross"><i class="fa-solid fa-chart-line"></i></div>
+                  <div class="kpi-details">
+                    <div class="kpi-header-row">
+                      <span class="kpi-title">Gross Profit</span>
+                      <span class="kpi-badge badge-profit" id="financial-gross-margin">0%</span>
+                    </div>
+                    <h3 id="financial-gross-profit">LKR 0.00</h3>
+                    <span class="kpi-subtext">Revenue − Item Cost</span>
+                  </div>
+                </div>
+                <div class="kpi-card">
+                  <div class="kpi-icon icon-expenses"><i class="fa-solid fa-receipt"></i></div>
+                  <div class="kpi-details">
+                    <span class="kpi-title">Total Expenses</span>
+                    <h3 id="financial-expenses">LKR 0.00</h3>
+                    <span class="kpi-subtext" id="financial-expenses-count">0 recorded entries</span>
+                  </div>
+                </div>
+                <div class="kpi-card highlight-net">
+                  <div class="kpi-icon icon-net"><i class="fa-solid fa-scale-balanced"></i></div>
+                  <div class="kpi-details">
+                    <div class="kpi-header-row">
+                      <span class="kpi-title">Net Profit</span>
+                      <span class="kpi-badge badge-net" id="financial-net-margin">0%</span>
+                    </div>
+                    <h3 id="financial-net-profit">LKR 0.00</h3>
+                    <span class="kpi-subtext">Gross Profit − Expenses</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Daily Sales Chart -->
+            <div class="card col-span-2">
+              <div class="card-header">
+                <h3>Sales Breakdown</h3>
+              </div>
+              <div class="chart-container" style="position: relative; height:250px; width:100%">
+                <canvas id="salesChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Total Income Donut Chart -->
+            <div class="card">
+              <div class="card-header">
+                <h3>Income by Category</h3>
+              </div>
+              <div class="chart-container donut-container"
+                style="position: relative; height:200px; width:100%; display: flex; justify-content: center; align-items: center;">
+                <canvas id="incomeChart"></canvas>
+                <div class="donut-inner-text">
+                  <h2 id="total-income-value">LKR 0</h2>
+                </div>
+              </div>
+              <div class="donut-legend">
+                <div class="legend-item"><span class="dot food"></span> Food</div>
+                <div class="legend-item"><span class="dot drinks"></span> Drinks</div>
+                <div class="legend-item"><span class="dot others"></span> Others</div>
+              </div>
+            </div>
+
+            <!-- Summary Cards (Stacked) -->
+            <div class="summary-cards">
+              <div class="summary-card">
+                <div class="summary-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="summary-info">
+                  <p>Total Orders</p>
+                  <h3 id="total-orders-value">0</h3>
+                </div>
+                <div class="summary-badge negative" id="orders-growth">-0%</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-icon"><i class="fa-solid fa-users"></i></div>
+                <div class="summary-info">
+                  <p>New Customers</p>
+                  <h3 id="new-customers-value">0</h3>
+                </div>
+                <div class="summary-badge positive" id="customers-growth">+0%</div>
+              </div>
+            </div>
+
+            <!-- Dish Performance & Profitability Table -->
+            <div class="card col-span-4">
+              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+                <div>
+                  <h3>Item Performance &amp; Profitability</h3>
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Compare sales volume against profit contribution</span>
+                </div>
+                <div class="rank-toggle-group" style="display: flex; gap: 0.4rem; background: var(--bg-color); padding: 0.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                  <button class="rank-btn active" id="btn-rank-orders"><i class="fa-solid fa-fire"></i> Most Popular</button>
+                  <button class="rank-btn" id="btn-rank-profit"><i class="fa-solid fa-coins"></i> Most Profitable</button>
+                </div>
+              </div>
+              <div class="table-container">
+                <table class="data-table" id="dishes-table">
+                  <thead>
+                    <tr>
+                      <th>Dish</th>
+                      <th>Category</th>
+                      <th>Selling Price</th>
+                      <th>Cost Price</th>
+                      <th>Unit Margin</th>
+                      <th>Units Sold</th>
+                      <th>Total Profit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Rows populated by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Food & Drinks View -->
+        <div id="view-food-drinks" class="view-section hidden">
+          <div class="dashboard-grid">
+            <!-- Left Side: Catalog Grid (col-span-3) -->
+            <div class="col-span-3" style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <div class="card catalog-header" style="padding: 1rem 1.5rem;">
+                <div class="catalog-filters" style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+                  <button class="catalog-filter-btn active" data-filter="All">All Items</button>
+                  <button class="catalog-filter-btn" data-filter="Food">Food</button>
+                  <button class="catalog-filter-btn" data-filter="Drinks">Drinks</button>
+                  <button class="catalog-filter-btn" data-filter="Snacks">Snacks</button>
+                  <button class="catalog-filter-btn" data-filter="Ice Cream">Ice Cream</button>
+                  <button class="catalog-filter-btn" data-filter="Others">Others</button>
+                  
+                  <div style="margin-left: auto; display: flex; align-items: center; gap: 0.5rem;" id="catalog-action-btns">
+                    <button class="btn-outline" style="padding: 0.5rem 0.8rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 0;" id="export-dishes-btn">
+                      <i class="fa-solid fa-download"></i> Export Menu
+                    </button>
+                    <label class="btn-outline" style="padding: 0.5rem 0.8rem; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem; margin-bottom: 0;" id="import-dishes-label">
+                      <i class="fa-solid fa-file-import"></i> Import Menu
+                      <input type="file" id="import-dishes-file" accept=".json,.csv" style="display: none;">
+                    </label>
+                    <button class="btn-primary" style="padding: 0.5rem 1rem;" id="add-item-btn">
+                      <i class="fa-solid fa-plus"></i> Add New Item
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="catalog-grid" id="catalog-grid"></div>
+            </div>
+
+            <!-- Right Side: Live Order Sidebar (col-span-1) -->
+            <div class="col-span-1" id="cart-panel-wrapper">
+              <div class="card cart-card"
+                style="min-height: 480px; display: flex; flex-direction: column; padding: 1.25rem;">
+                <div class="card-header"
+                  style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; border-radius: 0; background: transparent; padding: 0 0 0.75rem 0;">
+                  <h3 style="font-size: 1.05rem; font-weight: 600;"><i class="fa-solid fa-receipt"
+                      style="color: var(--primary); margin-right: 0.5rem;"></i> Current Order</h3>
+                  <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <span class="badge" id="cart-count"
+                      style="background: var(--primary); color: white; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">0</span>
+                    <button type="button" class="modal-close mobile-cart-close" id="mobile-cart-close-btn"><i class="fa-solid fa-xmark"></i></button>
+                  </div>
+                </div>
+                <div class="cart-items" id="cart-items"
+                  style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; min-height: 200px;">
+                  <div style="text-align: center; color: var(--text-muted); padding-top: 3.5rem;"
+                    id="empty-cart-message">
+                    <i class="fa-solid fa-basket-shopping"
+                      style="font-size: 2.2rem; margin-bottom: 0.75rem; color: #e5e7eb;"></i>
+                    <p style="font-size: 0.85rem;">No items in this order</p>
+                  </div>
+                </div>
+                <div class="cart-summary"
+                  style="border-top: 1px solid var(--border-color); padding-top: 1rem; margin-top: auto;">
+                  <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 0.85rem; color: var(--text-muted);">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">LKR 0.00</span>
+                  </div>
+                  <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 1.25rem; font-weight: 700; font-size: 1.1rem; color: var(--text-main);">
+                    <span>Total</span>
+                    <span id="cart-total" style="color: var(--primary); font-size: 1.2rem;">LKR 0.00</span>
+                  </div>
+                  <button class="btn-primary"
+                    style="width: 100%; padding: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;"
+                    id="checkout-btn" disabled>
+                    <i class="fa-solid fa-cash-register"></i> Checkout & Pay
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bills View -->
+        <div id="view-bills" class="view-section hidden">
+          <div class="dashboard-grid">
+            <div class="card col-span-4">
+              <div class="card-header">
+                <h3>Recent Transactions</h3>
+              </div>
+              <div class="table-container">
+                <table class="data-table" id="bills-table">
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Date</th>
+                      <th>Customer</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Populated by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages View -->
+        <div id="view-messages" class="view-section hidden">
+          <div class="dashboard-grid">
+            <div class="card col-span-4">
+              <div class="card-header">
+                <h3>System Notifications</h3>
+              </div>
+              <div class="messages-list" id="messages-list">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings View -->
+        <div id="view-settings" class="view-section hidden">
+          <div class="dashboard-grid">
+            
+            <!-- Profile Settings Card -->
+            <div class="card col-span-2">
+              <div class="card-header">
+                <h3><i class="fa-solid fa-user-gear" style="color: var(--primary); margin-right: 0.5rem;"></i>Profile Settings</h3>
+              </div>
+              <form class="settings-form">
+                <div class="input-group">
+                  <label>Full Name</label>
+                  <input type="text" class="form-input" id="settings-name" value="User">
+                </div>
+                <div class="input-group">
+                  <label>Role</label>
+                  <input type="text" class="form-input" id="settings-role" value="Staff" disabled>
+                </div>
+                <button type="button" class="btn-primary" id="save-settings-btn" style="width: auto; padding: 0.6rem 1.25rem;">
+                  <i class="fa-solid fa-check"></i> Save Profile
+                </button>
+              </form>
+            </div>
+
+            <!-- Day-End SMS & WhatsApp Notification Settings Card (Requirement 2.2) -->
+            <div class="card col-span-2" style="border-left: 4px solid #25D366;">
+              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div>
+                  <h3><i class="fa-brands fa-whatsapp" style="color: #25D366; margin-right: 0.5rem; font-size: 1.15rem;"></i>Day-End Summary Notifications</h3>
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Choose who receives the daily sales, expenses &amp; profit summary</span>
+                </div>
+              </div>
+              <form id="notification-settings-form" class="settings-form">
+                <div class="input-group">
+                  <label>Recipient Phone Number (for WhatsApp / SMS) <span style="color: #dc2626;">*</span></label>
+                  <div class="input-wrapper" style="position: relative;">
+                    <i class="fa-solid fa-phone" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+                    <input type="text" class="form-input" id="setting-notification-phone" placeholder="e.g. 0768899324 or +94768899324" style="padding-left: 2.5rem;" required>
+                  </div>
+                  <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; display: block;">Supports Sri Lankan local (07x) and international (+947x) numbers</span>
+                </div>
+
+                <div class="input-group">
+                  <label>Owner Name / Notification Recipient</label>
+                  <input type="text" class="form-input" id="setting-notification-recipient" placeholder="Owner name" value="W.A Lahiru Sampath">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                  <div class="input-group">
+                    <label>Preferred Channel</label>
+                    <select class="form-input" id="setting-notification-channel">
+                      <option value="WhatsApp">WhatsApp (Direct / Web)</option>
+                      <option value="SMS">SMS Message</option>
+                      <option value="Both">Both (WhatsApp &amp; SMS)</option>
+                    </select>
+                  </div>
+                  <div class="input-group">
+                    <label>Daily Notification Trigger</label>
+                    <select class="form-input" id="setting-notification-auto">
+                      <option value="manual">Manual (1-Click from Dashboard)</option>
+                      <option value="auto">Auto Prompt at Shift Close</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="background: rgba(37, 211, 102, 0.08); border: 1px solid rgba(37, 211, 102, 0.25); border-radius: var(--radius-sm); padding: 0.75rem; margin: 0.75rem 0; font-size: 0.8rem; color: #166534; display: flex; align-items: center; gap: 0.5rem;">
+                  <i class="fa-solid fa-circle-check" style="color: #16a34a; font-size: 1rem;"></i>
+                  <span>The day-end summary includes <strong>Gross Revenue, COGS, Expenses, Gross &amp; Net Operating Profit</strong>.</span>
+                </div>
+
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+                  <button type="submit" class="btn-primary" id="save-notification-settings-btn" style="width: auto; padding: 0.6rem 1.25rem;">
+                    <i class="fa-solid fa-floppy-disk"></i> Save Notification Settings
+                  </button>
+                  <button type="button" class="btn-outline" id="test-notification-btn" style="width: auto; padding: 0.6rem 1rem; color: #15803d; border-color: #86efac;">
+                    <i class="fa-brands fa-whatsapp"></i> Test Send to Number
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Cafe Information Card -->
+            <div class="card col-span-4">
+              <div class="card-header">
+                <h3><i class="fa-solid fa-store" style="color: var(--primary); margin-right: 0.5rem;"></i>Cafe Outlet Information</h3>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 0.5rem 0;">
+                <div class="input-group">
+                  <label>Cafe Name</label>
+                  <input type="text" class="form-input" id="setting-cafe-name" value="Mochiato">
+                </div>
+                <div class="input-group">
+                  <label>Notification Email</label>
+                  <input type="email" class="form-input" id="setting-notification-email" value="wanniarachchigelahirusampath@gmail.com">
+                </div>
+                <div class="input-group">
+                  <label>System Currency</label>
+                  <input type="text" class="form-input" id="setting-currency" value="LKR" disabled>
+                </div>
+                <div class="input-group">
+                  <label>Address</label>
+                  <input type="text" class="form-input" id="setting-address" value="138B, Matara Para, Tangalle">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Support View -->
+        <div id="view-support" class="view-section hidden">
+          <div class="dashboard-grid">
+            <div class="card col-span-4">
+              <div class="card-header">
+                <h3>Help & Support</h3>
+              </div>
+              <p style="padding: 1rem; color: var(--text-muted);">For business and account inquiries, contact <strong>W.A Lahiru Sampath</strong> at
+                <a href="mailto:wanniarachchigelahirusampath@gmail.com">wanniarachchigelahirusampath@gmail.com</a> or <a href="tel:0768899324">0768899324</a>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Role Management View -->
+        <div id="view-users" class="view-section hidden">
+          <div class="dashboard-grid">
+            <div class="card col-span-4">
+              <div class="card-header" style="justify-content: space-between; display: flex; align-items: center;">
+                <div>
+                  <h3><i class="fa-solid fa-users-gear" style="color: var(--primary); margin-right: 0.5rem;"></i> Role Management</h3>
+                  <span style="font-size: 0.82rem; color: var(--text-muted);">Add, edit, or remove system access roles</span>
+                </div>
+                <button class="btn-primary" style="padding: 0.5rem 1rem;" id="add-role-btn"><i class="fa-solid fa-plus"></i> Add New Role</button>
+              </div>
+              <div class="table-container">
+                <table class="data-table" id="users-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Username</th>
+                      <th>System Role</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="users-table-body">
+                    <!-- Populated by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expenses Management View (Admin only) -->
+        <div id="view-expenses" class="view-section hidden">
+          <div class="dashboard-grid">
+            
+            <!-- Expense Quick Stats -->
+            <div class="card col-span-4" style="background: linear-gradient(135deg, rgba(128,0,0,0.05), rgba(128,0,0,0.01));">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 0.3rem 0.1rem;">
+                <div>
+                  <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;"><i class="fa-solid fa-money-bill-transfer" style="color: var(--primary); margin-right: 0.5rem;"></i>Operating Expenses Tracker</h3>
+                  <span style="font-size: 0.85rem; color: var(--text-muted);">Record cafe overheads, utilities, inventory restock, staff payouts, and daily petty cash</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 1.25rem;">
+                  <div style="text-align: right;">
+                    <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Expenses for Period</div>
+                    <div id="expenses-period-total" style="font-size: 1.35rem; font-weight: 700; color: #dc2626;">LKR 0.00</div>
+                  </div>
+                  <button class="btn-primary" id="add-expense-btn" style="padding: 0.6rem 1.2rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-plus"></i> Record Expense
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Expenses Table -->
+            <div class="card col-span-4">
+              <div class="card-header" style="justify-content: space-between; display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                <h3>Expense Log</h3>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <select id="expense-category-filter" class="form-input" style="padding: 0.4rem 0.8rem; font-size: 0.85rem; width: auto;">
+                    <option value="All">All Categories</option>
+                    <option value="Raw Materials / Ingredients">Raw Materials / Ingredients</option>
+                    <option value="Utilities">Utilities (Electricity, Water, Gas)</option>
+                    <option value="Salaries & Wages">Salaries &amp; Wages</option>
+                    <option value="Rent">Rent</option>
+                    <option value="Maintenance">Maintenance &amp; Repairs</option>
+                    <option value="Packaging & Disposables">Packaging &amp; Disposables</option>
+                    <option value="Marketing">Marketing &amp; Promo</option>
+                    <option value="Miscellaneous">Miscellaneous</option>
+                  </select>
+                </div>
+              </div>
+              <div class="table-container">
+                <table class="data-table" id="expenses-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Description</th>
+                      <th>Category</th>
+                      <th>Amount (LKR)</th>
+                      <th>Recorded By</th>
+                      <th>Notes</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="expenses-table-body">
+                    <!-- Populated by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- System Audit Logs View (Requirement 3: Activity & Audit Trail) -->
+        <div id="view-audit" class="view-section hidden">
+          <div class="dashboard-grid">
+            
+            <!-- Audit Header & Filters Card -->
+            <div class="card col-span-4" style="border-left: 4px solid var(--primary);">
+              <div class="card-header" style="justify-content: space-between; display: flex; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                  <h3 style="font-size: 1.15rem; margin-bottom: 0.25rem;"><i class="fa-solid fa-clock-rotate-left" style="color: var(--primary); margin-right: 0.5rem;"></i>System Audit Log &amp; Activity Trail</h3>
+                  <span style="font-size: 0.85rem; color: var(--text-muted);">Tamper-evident record of all staff operations, checkouts, menu &amp; price changes, expenses, and security events</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+                  <button class="btn-outline" id="refresh-audit-btn" style="padding: 0.5rem 0.9rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                    <i class="fa-solid fa-arrows-rotate"></i> Refresh
+                  </button>
+                  <button class="btn-primary" id="export-audit-csv-btn" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                    <i class="fa-solid fa-file-arrow-down"></i> Export Audit Log (CSV)
+                  </button>
+                </div>
+              </div>
+
+              <!-- Quick KPI Counter Cards -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div style="background: var(--bg-surface-2, #f9fafb); border: 1px solid var(--border-color, #e5e7eb); border-radius: var(--radius-sm); padding: 0.85rem; display: flex; align-items: center; gap: 0.85rem;">
+                  <div style="width: 42px; height: 42px; border-radius: 8px; background: rgba(59, 130, 246, 0.12); color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                    <i class="fa-solid fa-list-check"></i>
+                  </div>
+                  <div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Total Events</div>
+                    <div id="audit-kpi-total" style="font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">0</div>
+                  </div>
+                </div>
+
+                <div style="background: var(--bg-surface-2, #f9fafb); border: 1px solid var(--border-color, #e5e7eb); border-radius: var(--radius-sm); padding: 0.85rem; display: flex; align-items: center; gap: 0.85rem;">
+                  <div style="width: 42px; height: 42px; border-radius: 8px; background: rgba(16, 185, 129, 0.12); color: #059669; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </div>
+                  <div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Sales Checkouts</div>
+                    <div id="audit-kpi-sales" style="font-size: 1.35rem; font-weight: 700; color: #059669;">0</div>
+                  </div>
+                </div>
+
+                <div style="background: var(--bg-surface-2, #f9fafb); border: 1px solid var(--border-color, #e5e7eb); border-radius: var(--radius-sm); padding: 0.85rem; display: flex; align-items: center; gap: 0.85rem;">
+                  <div style="width: 42px; height: 42px; border-radius: 8px; background: rgba(245, 158, 11, 0.12); color: #d97706; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                  </div>
+                  <div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Inventory Actions</div>
+                    <div id="audit-kpi-inventory" style="font-size: 1.35rem; font-weight: 700; color: #d97706;">0</div>
+                  </div>
+                </div>
+
+                <div style="background: var(--bg-surface-2, #f9fafb); border: 1px solid var(--border-color, #e5e7eb); border-radius: var(--radius-sm); padding: 0.85rem; display: flex; align-items: center; gap: 0.85rem;">
+                  <div style="width: 42px; height: 42px; border-radius: 8px; background: rgba(139, 92, 246, 0.12); color: #7c3aed; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Security &amp; Roles</div>
+                    <div id="audit-kpi-security" style="font-size: 1.35rem; font-weight: 700; color: #7c3aed;">0</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Search and Filter Controls -->
+              <div style="display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; align-items: center;">
+                <div class="search-bar" style="flex: 1; min-width: 220px; background: var(--bg-surface-2, #f9fafb);">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="audit-search-input" placeholder="Search by staff, action code, or description...">
+                </div>
+
+                <select id="audit-category-filter" class="form-input" style="width: auto; min-width: 170px;">
+                  <option value="All">All Categories</option>
+                  <option value="Sales">Sales &amp; Checkouts</option>
+                  <option value="Inventory">Inventory &amp; Menu</option>
+                  <option value="Expenses">Operating Expenses</option>
+                  <option value="Users">Role &amp; Staff Access</option>
+                  <option value="Settings">System Settings</option>
+                  <option value="Reports">Reports &amp; Summaries</option>
+                  <option value="Auth">Security &amp; Logins</option>
+                </select>
+
+                <select id="audit-timerange-filter" class="form-input" style="width: auto; min-width: 140px;">
+                  <option value="all">All Time</option>
+                  <option value="today" selected>Today Only</option>
+                  <option value="week">Past 7 Days</option>
+                  <option value="month">Past 30 Days</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Audit Table Card -->
+            <div class="card col-span-4">
+              <div class="card-header" style="justify-content: space-between; display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <h3 style="font-size: 1rem;"><i class="fa-solid fa-timeline" style="color: var(--primary); margin-right: 0.4rem;"></i>Activity Log Stream</h3>
+                  <span id="audit-count-badge" class="badge" style="background: rgba(128, 0, 0, 0.1); color: var(--primary); font-weight: 600;">0 events</span>
+                </div>
+                <span style="font-size: 0.8rem; color: var(--text-muted);" id="audit-table-status">Showing recent events</span>
+              </div>
+              <div class="table-container">
+                <table class="data-table" id="audit-table">
+                  <thead>
+                    <tr>
+                      <th style="min-width: 155px;">Timestamp</th>
+                      <th style="min-width: 135px;">Staff Member</th>
+                      <th>Category</th>
+                      <th>Action Code</th>
+                      <th style="min-width: 250px;">Description</th>
+                      <th style="text-align: center; width: 90px;">Details</th>
+                    </tr>
+                  </thead>
+                  <tbody id="audit-table-body">
+                    <!-- Populated by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div> <!-- End Views Container -->
+    </main>
+  </div>
+
+  <!-- Mobile Cart FAB (mobile layout only, shown on Food & Drinks) -->
+  <button class="mobile-cart-fab hidden" id="mobile-cart-fab">
+    <i class="fa-solid fa-basket-shopping"></i>
+    <span class="mobile-cart-fab-badge" id="mobile-cart-fab-badge">0</span>
+  </button>
+
+  <!-- Add Item Modal -->
+  <div class="modal-overlay" id="add-item-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Add New Item</h3>
+        <button class="modal-close" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="add-item-form" class="settings-form">
+        <div class="input-group">
+          <label>Item Name</label>
+          <input type="text" class="form-input" id="item-name" placeholder="e.g. Mocha Frappe" required>
+        </div>
+        <div class="input-group">
+          <label>Category</label>
+          <select class="form-input" id="item-category" required>
+            <option value="Food">Food</option>
+            <option value="Drinks">Drinks</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Ice Cream">Ice Cream</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="input-group">
+            <label>Selling Price (LKR)</label>
+            <input type="number" step="0.01" class="form-input" id="item-price" placeholder="e.g. 550.00" required>
+          </div>
+          <div class="input-group">
+            <label>Cost Price / COGS (LKR)</label>
+            <input type="number" step="0.01" class="form-input" id="item-cost" placeholder="e.g. 280.00" value="0" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Upload Image</label>
+          <input type="file" class="form-input" id="item-image-file" accept="image/*">
+        </div>
+        <div style="text-align:center; font-size: 0.8rem; margin: 0.5rem 0;">OR</div>
+        <div class="input-group">
+          <label>Image URL</label>
+          <input type="url" class="form-input" id="item-image" placeholder="https://...">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" id="cancel-modal-btn">Cancel</button>
+          <button type="submit" class="btn-primary" style="width: auto;">Save Item</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Item Modal -->
+  <div class="modal-overlay" id="edit-item-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Edit Item Details</h3>
+        <button class="modal-close" id="close-edit-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="edit-item-form" class="settings-form">
+        <input type="hidden" id="edit-item-id">
+        <div class="input-group">
+          <label>Item Name</label>
+          <input type="text" class="form-input" id="edit-item-name" required>
+        </div>
+        <div class="input-group">
+          <label>Category</label>
+          <select class="form-input" id="edit-item-category" required>
+            <option value="Food">Food</option>
+            <option value="Drinks">Drinks</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Ice Cream">Ice Cream</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="input-group">
+            <label>Selling Price (LKR)</label>
+            <input type="number" step="0.01" class="form-input" id="edit-item-price" placeholder="e.g. 550.00">
+          </div>
+          <div class="input-group">
+            <label>Cost Price / COGS (LKR)</label>
+            <input type="number" step="0.01" class="form-input" id="edit-item-cost" placeholder="e.g. 280.00">
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Upload Image</label>
+          <input type="file" class="form-input" id="edit-item-image-file" accept="image/*">
+        </div>
+        <div style="text-align:center; font-size: 0.8rem; margin: 0.5rem 0;">OR</div>
+        <div class="input-group">
+          <label>Image URL</label>
+          <input type="url" class="form-input" id="edit-item-image" placeholder="https://...">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" id="cancel-edit-modal-btn">Cancel</button>
+          <button type="submit" class="btn-primary" style="width: auto;">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Expense Modal -->
+  <div class="modal-overlay" id="add-expense-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Record Operating Expense</h3>
+        <button class="modal-close" id="close-expense-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="add-expense-form" class="settings-form">
+        <div class="input-group">
+          <label>Expense Description / Title</label>
+          <input type="text" class="form-input" id="expense-title" placeholder="e.g. Coffee beans & milk purchase" required>
+        </div>
+        <div class="input-group">
+          <label>Category</label>
+          <select class="form-input" id="expense-category" required>
+            <option value="Raw Materials / Ingredients">Raw Materials / Ingredients</option>
+            <option value="Utilities">Utilities (Electricity, Water, Gas)</option>
+            <option value="Salaries & Wages">Salaries &amp; Wages</option>
+            <option value="Rent">Rent</option>
+            <option value="Maintenance">Maintenance &amp; Repairs</option>
+            <option value="Packaging & Disposables">Packaging &amp; Disposables</option>
+            <option value="Marketing">Marketing &amp; Promo</option>
+            <option value="Miscellaneous">Miscellaneous</option>
+          </select>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="input-group">
+            <label>Amount (LKR)</label>
+            <input type="number" step="0.01" min="0.01" class="form-input" id="expense-amount" placeholder="e.g. 3500.00" required>
+          </div>
+          <div class="input-group">
+            <label>Date</label>
+            <input type="date" class="form-input" id="expense-date" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Notes / Receipt Reference (Optional)</label>
+          <input type="text" class="form-input" id="expense-notes" placeholder="e.g. Inv #1042 or Vendor: Keells">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" id="cancel-expense-modal-btn">Cancel</button>
+          <button type="submit" class="btn-primary" style="width: auto;">Save Expense</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div class="modal-overlay" id="checkout-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Finalize Checkout</h3>
+        <button class="modal-close" id="close-checkout-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="checkout-form" class="settings-form">
+        <div class="input-group">
+          <label>Order Type</label>
+          <select class="form-input" id="checkout-type" required>
+            <option value="Takeaway">Takeaway</option>
+            <option value="Table 1">Table 1</option>
+            <option value="Table 2">Table 2</option>
+            <option value="Table 3">Table 3</option>
+            <option value="Table 4">Table 4</option>
+            <option value="Table 5">Table 5</option>
+          </select>
+        </div>
+        <div class="input-group" id="customer-name-group">
+          <label>Customer Name / Info</label>
+          <input type="text" class="form-input" id="checkout-customer" placeholder="e.g. Walk-in Customer"
+            value="Walk-in">
+        </div>
+        <div class="input-group">
+          <label>Payment Method</label>
+          <select class="form-input" id="checkout-payment" required>
+            <option value="Cash">Cash Payment</option>
+            <option value="Card">Card Reader</option>
+            <option value="Digital">Digital Wallet</option>
+          </select>
+        </div>
+
+        <div class="checkout-breakdown"
+          style="background: var(--bg-color); padding: 1rem; border-radius: var(--radius-sm); margin-top: 1rem;">
+          <div
+            style="display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--text-muted);">
+            <span>Total Payable:</span>
+            <strong id="modal-payable" style="color: var(--primary); font-size: 1.1rem;">LKR 0.00</strong>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" id="cancel-checkout-modal-btn">Cancel</button>
+          <button type="submit" class="btn-primary" style="width: auto;">Confirm Checkout</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Role Modal -->
+  <div class="modal-overlay" id="role-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="role-modal-title">Add New Role</h3>
+        <button class="modal-close" id="close-role-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="role-form" class="settings-form">
+        <input type="hidden" id="role-id">
+        <div class="input-group">
+          <label>Username</label>
+          <input type="text" class="form-input" id="role-username" required>
+        </div>
+        <div class="input-group">
+          <label>System Role</label>
+          <select class="form-input" id="role-type" required>
+            <option value="Admin">Admin</option>
+            <option value="StockKeeper">Stock Keeper</option>
+            <option value="Cashier">Cashier</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Password <span style="font-size: 0.75rem; color: #888;" id="role-password-hint"></span></label>
+          <input type="password" class="form-input" id="role-password">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-outline" id="cancel-role-modal-btn">Cancel</button>
+          <button type="submit" class="btn-primary" style="width: auto;">Save Role</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Bill Preview Modal -->
+  <div class="modal-overlay" id="bill-preview-modal">
+    <div class="modal-content" style="max-width: 400px;">
+      <div class="modal-header">
+        <h3>Bill Details</h3>
+        <button class="modal-close" id="close-preview-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="bill-preview-content" style="font-size: 0.95rem; line-height: 1.5; color: var(--text-main);">
+        <!-- Filled dynamically by JS -->
+      </div>
+      <div class="modal-footer"
+        style="margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+        <button type="button" class="btn-outline" id="print-preview-bill-btn" style="width: auto;"><i
+            class="fa-solid fa-print"></i> Re-print Receipt</button>
+        <button type="button" class="btn-primary" id="close-preview-modal-btn-2" style="width: auto;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shift Tracking Modal -->
+  <div class="modal-overlay" id="shift-modal">
+    <div class="modal-content" style="max-width: 350px;">
+      <div class="modal-header">
+        <h3>Shift Attendance</h3>
+        <button class="modal-close" id="close-shift-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div style="text-align: center; padding: 1rem 0;">
+        <div style="font-size: 3rem; color: var(--primary); margin-bottom: 0.5rem;"><i class="fa-regular fa-clock"></i></div>
+        <h4 id="shift-emp-name" style="margin: 0; font-size: 1.1rem; font-weight: 600;">Theresa Webb</h4>
+        <p id="shift-emp-role" style="font-size: 0.85rem; color: var(--text-muted); margin: 0.25rem 0 1rem 0;">Waiter</p>
+        
+        <div style="background: var(--bg-color); padding: 1rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+          <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Shift Elapsed Time</div>
+          <div id="shift-timer" style="font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin: 0.25rem 0; font-family: monospace;">04:15:32</div>
+          <span class="summary-badge positive" id="shift-status">Clocked In</span>
+        </div>
+        
+        <button class="btn-primary" id="shift-toggle-btn" style="width: 100%; padding: 0.75rem;">Clock Out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audit Log Details Modal -->
+  <div class="modal-overlay" id="audit-modal">
+    <div class="modal-content" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3 id="audit-modal-title"><i class="fa-solid fa-file-lines" style="color: var(--primary); margin-right: 0.5rem;"></i>Audit Event Snapshot</h3>
+        <button class="modal-close" id="close-audit-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div style="padding: 1.25rem 0;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; background: var(--bg-surface-2, #f8fafc); padding: 0.85rem; border-radius: var(--radius-sm); font-size: 0.85rem; border: 1px solid var(--border-color, #e2e8f0);">
+          <div><strong style="color: var(--text-muted);">Timestamp:</strong> <div id="audit-modal-time" style="font-weight: 600; margin-top: 0.15rem;">-</div></div>
+          <div><strong style="color: var(--text-muted);">Staff Member:</strong> <div id="audit-modal-user" style="font-weight: 600; margin-top: 0.15rem;">-</div></div>
+          <div><strong style="color: var(--text-muted);">Category:</strong> <div id="audit-modal-category" style="margin-top: 0.15rem;">-</div></div>
+          <div><strong style="color: var(--text-muted);">Action Code:</strong> <div id="audit-modal-action" style="font-family: monospace; font-weight: 600; margin-top: 0.15rem;">-</div></div>
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.35rem;">Event Description</div>
+          <div id="audit-modal-details" style="font-size: 0.92rem; line-height: 1.45; color: var(--text-main); font-weight: 500; padding: 0.75rem; background: var(--bg-surface-2, #f8fafc); border-radius: var(--radius-sm); border: 1px solid var(--border-color, #e2e8f0);">-</div>
+        </div>
+        <div>
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.35rem;">Recorded Metadata &amp; Payload</div>
+          <pre id="audit-modal-meta" style="background: #0f172a; color: #38bdf8; padding: 0.85rem; border-radius: var(--radius-sm); font-size: 0.82rem; overflow-x: auto; max-height: 220px; font-family: monospace; margin: 0; line-height: 1.4;"></pre>
+        </div>
+      </div>
+      <div class="modal-footer" style="margin-top: 0.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem; display: flex; justify-content: flex-end;">
+        <button type="button" class="btn-primary" id="close-audit-modal-footer-btn" style="width: auto; padding: 0.5rem 1.25rem;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Populated by printReceipt() in app.js and shown only via @media print in style.css.
+       Printing in-page (instead of window.open) avoids Android Chrome silently blocking
+       popups opened after an await, and works inside an installed PWA where new windows
+       aren't reliably supported. -->
+  <div id="receipt-print-area"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').catch(err => {
+          console.warn('Service worker registration failed:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
